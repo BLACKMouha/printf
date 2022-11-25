@@ -42,10 +42,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
-			putchar(format[i]);
-			noc++;
-		}
+			noc += write(1, &(format[i]), 1);
 	}
 	return (noc);
 }
