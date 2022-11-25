@@ -10,8 +10,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	size_t len_f = strlen(format), i, j, noc = 0;
-	char *str;
+	size_t len_f = strlen(format), i , j, noc = 0;
+	char * str;
 
 	if (!format || format[0] == '\0')
 		return (0);
@@ -22,26 +22,64 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
+			switch(format[i])
 			{
 				case 'c':
-					noc += putchar(va_arg(args, int));
+					putchar(va_arg(args, int));
+					noc++;
 					break;
 				case '%':
-					noc += putchar('%');
+					putchar('%');
+					noc++;
 					break;
 				case 's':
 					str = va_arg(args, char *);
 					for (j = 0; str[j]; j++, noc++)
 						putchar(str[j]);
-					break;
 			}
 		}
 		else
-			noc += putchar(format[i]);
+		{
+			putchar(format[i]);
+			noc++;
+		}
 	}
 	return (noc);
 }
+
+/**
+ * is_spec - checks if a character preceded by '%' is a valid specifier
+ * Prototype: int is_spec(char c);
+ * @c: a character
+ * Return: 1 if the character is a valid specifier otherwise 0.
+ */
+int is_spec(char c)
+{
+	int i, j;
+	char specs[] = {'c', 's', '%', '\0'};
+
+	i = j = 0;
+	while (specs[i])
+	{
+		if (specs[i] == c)
+			j++;
+		i++;
+	}
+
+	return (j);
+}
+
+
+
+int loop_write(char *s)
+{
+	int i;
+	for (i = 0; s[i]; i++)
+		write(1, &(s[i]), 1);
+
+	return (i);
+}
+
 
 
 
