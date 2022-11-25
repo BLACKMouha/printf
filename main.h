@@ -10,5 +10,5 @@
 /** Prototypes */
 int _printf(const char *format, ...);
 int is_spec(char c);
-
+int loop_write(char *s);
 #endif /** MAIN_H */
