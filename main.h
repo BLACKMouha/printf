@@ -1,14 +1,18 @@
 #ifndef MAIN_H
 #define MAIN_H
-/** C header files **/
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdarg.h>
 
-/** Prototypes */
+/** ===== C Header Files ===== */
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <unistd.h>
+
+/** ===== Function Prototypes ===== */
 int _printf(const char *format, ...);
-int is_spec(char c);
-int loop_write(char *s);
-#endif /** MAIN_H */
+int _putchar(char c);
+int _strlen(const char *s);
+int _strcmp(const char *s1, const char *s2);
+int _puts(char *s);
+
+#endif /* MAIN_H **/
