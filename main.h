@@ -9,11 +9,23 @@
 #include <unistd.h>
 
 /** ===== Function Prototypes ===== */
+/** DIY printf prototype*/
 int _printf(const char *format, ...);
-int _putchar(char c);
+
+/** String Utility*/
 int _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
+char *_strdup(char *str);
+
+/** String Printers*/
+int _putchar(char c);
 int _puts(char *s);
+void rev_str(char *s);
+
+/** Converters*/
+
+/** Number Printers*/
 int _putint(int n);
+int _putint2bin(unsigned long int n);
 
 #endif /* MAIN_H **/

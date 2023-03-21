@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * _printf - writes out to stdout by producing an output according to a format
@@ -29,6 +30,10 @@ int _printf(const char *format, ...)
 			noc += _putchar('%');
 		else if (format[i] == 'd' || format[i] == 'i')
 			noc += _putint(va_arg(ap, int));
+		else if (format[i] == 'b')
+		{
+			noc += _putint2bin(va_arg(ap, int));
+		}
 		else
 		{
 			if (format[i])
