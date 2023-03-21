@@ -27,6 +27,8 @@ int _printf(const char *format, ...)
 			noc += _puts(va_arg(ap, char *));
 		else if (format[i] == '%')
 			noc += _putchar('%');
+		else if (format[i] == 'd' || format[i] == 'i')
+			noc += _putint(va_arg(ap, int));
 		else
 		{
 			if (format[i])

@@ -14,5 +14,6 @@ int _putchar(char c);
 int _strlen(const char *s);
 int _strcmp(const char *s1, const char *s2);
 int _puts(char *s);
+int _putint(int n);
 
 #endif /* MAIN_H **/
