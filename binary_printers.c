@@ -38,7 +38,9 @@ char *int2bin(long int n)
 	}
 	else
 	{
-		tmp = ~(_abs(-n)) + 1;
+		tmp = (unsigned int)(-n);
+		tmp = ~tmp;
+		tmp = tmp + 1;
 		r = tmp;
 		for (i = 0; tmp > 1 || i < 63; tmp /= 2)
 				i++;
