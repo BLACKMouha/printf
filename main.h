@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include <limits.h>
 #include <unistd.h>
 
@@ -23,9 +24,14 @@ int _puts(char *s);
 void rev_str(char *s);
 
 /** Converters*/
+char *int2bin(long int n);
+char *_putbinint(long int n);
+
+/** Number Utility */
+unsigned long int _abs(long int x);
 
 /** Number Printers*/
 int _putint(int n);
-int _putint2bin(unsigned long int n);
+int _putint2bin(long int n);
 
 #endif /* MAIN_H **/
