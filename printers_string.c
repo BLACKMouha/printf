@@ -66,7 +66,7 @@ int _putchr(va_list ap)
  */
 int _putnpt(va_list ap)
 {
-	char *str = va_arg(ap, char *);
+	char *str = va_arg(ap, char *), *hex;
 	int i, noc;
 
 	if (!str)
@@ -75,10 +75,14 @@ int _putnpt(va_list ap)
 	noc = 0;
 	for (i = 0; str[i]; i++)
 	{
-		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		if (str[i] > 0 && (str[i] < 32 || str[i] >= 127))
 		{
-			noc += _puts("\\x0");
-			noc += _puts(converter(str[i], 16, 0));
+			noc += _puts("\\x");
+			hex = converter(str[i], 16, 0);
+			if (!hex[1])
+				noc += _putchar('0');
+			else
+				noc += _puts(hex);
 		}
 		else
 			noc += _putchar(str[i]);
