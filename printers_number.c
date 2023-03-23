@@ -36,9 +36,6 @@ int _putbin(va_list ap)
 	char *s;
 	int len;
 
-	if (i == 0)
-		return _putchar('0');
-
 	s = converter(i, 2, 0);
 	len = _puts(s);
 	free(s);

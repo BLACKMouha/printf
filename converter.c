@@ -30,8 +30,10 @@ char *_strchr(char *s, char c)
 char *converter(unsigned long int n, int base, int l)
 {
 	char *s, *digits;
-	unsigned int i;
-	unsigned int j;
+	unsigned int i, j;
+
+	if (n == 0)
+		return _strdup("0");
 
 	if (l > 0)
 		digits = _strdup("0123456789abcdef");
