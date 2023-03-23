@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * _putpercent - prints out the percent sign
+ * _putprt - prints out the percent sign
  * Prototype: int _putprt(va_list ap);
  * @ap: argument pointer;
+ * Return: the number of characters printed
  */
-int _putpercent(va_list ap)
+int _putprt(va_list ap)
 {
 	(void) ap;
 

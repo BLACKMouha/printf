@@ -80,7 +80,7 @@ int (*get_printer(char spec))(va_list)
 		{'d', _putint},
 		{'b', _putbin},
 		{'S', _putnpt},
-		{'%', _putpercent},
+		{'%', _putprt},
 		{'\0', NULL}
 	};
 	int i;
