@@ -54,3 +54,34 @@ int _putchr(va_list ap)
 
 	return (write(1, &c, 1));
 }
+
+/**
+ * _putnpt - prints out a string by replacing non printable characters
+ * (0 < ASCII value < 32 or >= 127) are printed this way: \x, followed by the
+ * ASCII code value in hexadecimal (upper case - always 2 characters)
+ *
+ * Prototype: int _putnpt(va_list ap);
+ * @ap: argument pointer for retrieving the next string
+ * Return: number of characters printed
+ */
+int _putnpt(va_list ap)
+{
+	char *str = va_arg(ap, char *);
+	int i, noc;
+
+	if (!str)
+		return (_puts("(null)"));
+
+	noc = 0;
+	for (i = 0; str[i]; i++)
+	{
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		{
+			noc += _puts("\\x0");
+			noc += _puts(converter(str[i], 16, 0));
+		}
+		else
+			noc += _putchar(str[i]);
+	}
+	return (noc);
+}

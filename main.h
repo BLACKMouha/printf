@@ -37,6 +37,7 @@ int _puts(char *s);
 void rev_str(char *s);
 int _putstr(va_list ap);
 int _putchr(va_list ap);
+int _putnpt(va_list ap);
 
 /** Converters*/
 char *converter(unsigned long int n, int base, int l);

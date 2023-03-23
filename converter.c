@@ -33,7 +33,7 @@ char *converter(unsigned long int n, int base, int l)
 	unsigned int i, j;
 
 	if (n == 0)
-		return _strdup("0");
+		return (_strdup("0"));
 
 	if (l > 0)
 		digits = _strdup("0123456789abcdef");
@@ -79,6 +79,7 @@ int (*get_printer(char spec))(va_list)
 		{'i', _putint},
 		{'d', _putint},
 		{'b', _putbin},
+		{'S', _putnpt},
 		{'\0', NULL}
 	};
 	int i;
@@ -102,5 +103,5 @@ int (*get_printer(char spec))(va_list)
  */
 int is_spec(const char spec)
 {
-	return (_strchr("csdixXuob", spec) != NULL);
+	return (_strchr("csdixXuobS", spec) != NULL);
 }
