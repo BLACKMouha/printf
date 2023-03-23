@@ -32,7 +32,7 @@ int _putint(va_list ap)
  */
 int _putbin(va_list ap)
 {
-	unsigned int i, n = va_arg(ap, unsigned int);
+	unsigned int i = va_arg(ap, unsigned int);
 	char *s;
 	int len;
 

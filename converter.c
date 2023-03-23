@@ -75,6 +75,7 @@ int (*get_printer(char spec))(va_list)
 		{'u', _putuint},
 		{'i', _putint},
 		{'d', _putint},
+		{'b', _putbin},
 		{'\0', NULL}
 	};
 	int i;
@@ -98,5 +99,5 @@ int (*get_printer(char spec))(va_list)
  */
 int is_spec(const char spec)
 {
-	return (_strchr("csdixXuo", spec) != NULL);
+	return (_strchr("csdixXuob", spec) != NULL);
 }
