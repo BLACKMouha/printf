@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	if (!format || !*format || !_strcmp(format, "%"))
-		return (0);
+		return (-1);
 
 	va_start(ap, format);
 	noc = 0;

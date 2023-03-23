@@ -80,12 +80,13 @@ int (*get_printer(char spec))(va_list)
 		{'d', _putint},
 		{'b', _putbin},
 		{'S', _putnpt},
+		{'%', _putprt},
 		{'\0', NULL}
 	};
 	int i;
 
 	i = 0;
-	while (i < 9)
+	while (i < 11)
 	{
 		if ((int_specs[i].ispec) == spec)
 			return (int_specs[i].f);
@@ -103,5 +104,5 @@ int (*get_printer(char spec))(va_list)
  */
 int is_spec(const char spec)
 {
-	return (_strchr("csdixXuobS", spec) != NULL);
+	return (_strchr("csdixXuobS%", spec) != NULL);
 }
