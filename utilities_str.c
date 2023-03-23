@@ -63,6 +63,7 @@ char *_strdup(char *str)
 
 	return (dup);
 }
+
 /**
  * rev_str - reverses a string
  * @s: string to reverse

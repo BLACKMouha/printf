@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 {
 	int i, noc;
 	va_list ap;
+	int (*func)(va_list);
 
 	if (!format || !*format || !_strcmp(format, "%"))
 		return (-1);
@@ -19,32 +20,22 @@ int _printf(const char *format, ...)
 	noc = 0;
 	for (i = 0; i < _strlen(format); i++)
 	{
-	if (format[i] == '%')
-	{
-		i++;
-		if (format[i] == 'c')
-			noc += _putchar(va_arg(ap, int));
-		else if (format[i] == 's')
-			noc += _puts(va_arg(ap, char *));
-		else if (format[i] == '%')
-			noc += _putchar('%');
-		else if (format[i] == 'd' || format[i] == 'i')
-			noc += _putint(va_arg(ap, int));
-		else if (format[i] == 'b')
+		if (format[i] == '%')
 		{
-			noc += _putint2bin(va_arg(ap, int));
-		}
-		else
-		{
-			if (format[i])
+			i++;
+			if (is_spec(format[i]) && get_printer(format[i]))
+				noc += get_printer(format[i])(ap);
+			else
 			{
-				i--;
-				noc += _putchar(format[i]);
+				if (format[i])
+				{
+					i--;
+					noc += _putchar(format[i]);
+				}
 			}
 		}
-	}
-	else
-		noc += _putchar(format[i]);
+		else
+			noc += _putchar(format[i]);
 	}
 	va_end(ap);
 	return (noc);

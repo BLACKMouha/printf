@@ -7,8 +7,7 @@
  */
 unsigned long int _abs(long int x)
 {
-	if (x < 0)
-		return (unsigned int) (-x);
-	else
-		return (unsigned int) (x);
+	x = (x >= 0) ? x : -x;
+
+	return (x);
 }
