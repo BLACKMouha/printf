@@ -45,6 +45,7 @@ char *converter(unsigned long int n, int base, int l)
 	s = malloc((i + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
+
 	i = 0;
 	j = _abs(n);
 	while (j != 0)
