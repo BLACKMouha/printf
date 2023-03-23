@@ -5,7 +5,7 @@
  * Prototype: int _putprt(va_list ap);
  * @ap: argument pointer;
  */
-int _putprt(va_list ap)
+int _putpercent(va_list ap)
 {
 	(void) ap;
 
