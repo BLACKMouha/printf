@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 {
 	int i, noc;
 	va_list ap;
-	int (*func)(va_list);
 
 	if (!format || !*format || !_strcmp(format, "%"))
 		return (-1);
