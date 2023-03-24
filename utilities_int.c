@@ -11,3 +11,8 @@ unsigned long int _abs(long int x)
 
 	return (x);
 }
+
+unsigned long int _abs_big(long int x)
+{
+	return ((unsigned int)(x));
+}

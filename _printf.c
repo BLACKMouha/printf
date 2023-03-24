@@ -9,10 +9,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, noc;
+	int i, noc, x;
 	va_list ap;
+	flag_t flags = {0, 0, 0};
 
-	if (!_strcmp(format, "%"))
+	if (!_strcmp(format, "%") || _strcmp(format, "% ") == 32)
 		return (-1);
 
 	va_start(ap, format);
@@ -22,8 +23,16 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			while (is_flag(format[i]))
+			{
+				set_flag(format[i], &flags, &x);
+				i++;
+			}
 			if (is_spec(format[i]) && get_printer(format[i]))
-				noc += get_printer(format[i])(ap);
+			{
+				noc += get_printer(format[i])(ap, &flags);
+				unset_flag(&flags);
+			}
 			else
 			{
 				if (format[i])
