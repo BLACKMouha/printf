@@ -32,10 +32,11 @@ int _puts(char *s)
  * @ap: variadic pointer
  * Return: number of characters printed
  */
-int _putstr(va_list ap)
+int _putstr(va_list ap, flag_t *flags)
 {
 	char *str = va_arg(ap, char *);
 
+	(void) flags;
 	if (!str)
 		return (_puts("(null)"));
 	else
@@ -48,10 +49,11 @@ int _putstr(va_list ap)
  * @ap: variadic pointer
  * Return: number of characters printed
  */
-int _putchr(va_list ap)
+int _putchr(va_list ap, flag_t *flags)
 {
 	char c = va_arg(ap, int);
 
+	(void) flags;
 	return (write(1, &c, 1));
 }
 
@@ -64,12 +66,13 @@ int _putchr(va_list ap)
  * @ap: argument pointer for retrieving the next string
  * Return: number of characters printed
  */
-int _putnpt(va_list ap)
+int _putnpt(va_list ap, flag_t *flags)
 {
 	int i, noc;
 	char *hex;
 	char *str = va_arg(ap, char *);
 
+	(void) flags;
 	if (!str)
 		return (_puts("(null)"));
 

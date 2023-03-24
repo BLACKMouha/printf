@@ -67,9 +67,9 @@ char *converter(unsigned long int n, int base, int l)
  * @spec: specifier
  * Return: the function pointer of the specifier if found, otherwise NULl
  */
-int (*get_printer(char spec))(va_list)
+int (*get_printer(char spec))(va_list, flag_t*)
 {
-	int_spec_t int_specs[] = {
+	spec_handler_t specs[] = {
 		{'c', _putchr},
 		{'s', _putstr},
 		{'x', _puthex},
@@ -89,12 +89,12 @@ int (*get_printer(char spec))(va_list)
 	i = 0;
 	while (i < 12)
 	{
-		if ((int_specs[i].ispec) == spec)
-			return (int_specs[i].f);
+		if ((specs[i].spec) == spec)
+			return (specs[i].func);
 		i++;
 	}
 
-	return (int_specs[i].f);
+	return (specs[i].func);
 }
 
 /**
@@ -106,4 +106,15 @@ int (*get_printer(char spec))(va_list)
 int is_spec(const char spec)
 {
 	return (_strchr("csdixXuobS%p", spec) != NULL);
+}
+
+/**
+ * is_flag - Checks if the arg is a valid flag
+ * Prototype: int is_flag(const char flag);
+ * @spec: single character, format specifier to check
+ * Return: 1 if the specified specifier is a valid flag, else 0.
+ */
+int is_flag(const char flag)
+{
+	return (_strchr(" +#", flag) != NULL);
 }
