@@ -39,6 +39,7 @@ int _putstr(va_list ap);
 int _putchr(va_list ap);
 int _putnpt(va_list ap);
 int _putprt(va_list ap);
+int _putadd(va_list ap);
 
 /** Converters*/
 char *converter(unsigned long int n, int base, int l);

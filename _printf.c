@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	int i, noc;
 	va_list ap;
 
-	if (!format || !*format || !_strcmp(format, "%"))
+	if (!_strcmp(format, "%"))
 		return (-1);
 
 	va_start(ap, format);

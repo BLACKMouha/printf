@@ -30,7 +30,7 @@ char *_strchr(char *s, char c)
 char *converter(unsigned long int n, int base, int l)
 {
 	char *s, *digits;
-	unsigned int i, j;
+	unsigned long int i, j;
 
 	if (n == 0)
 		return (_strdup("0"));
@@ -81,12 +81,13 @@ int (*get_printer(char spec))(va_list)
 		{'b', _putbin},
 		{'S', _putnpt},
 		{'%', _putprt},
+		{'p', _putadd},
 		{'\0', NULL}
 	};
 	int i;
 
 	i = 0;
-	while (i < 11)
+	while (i < 12)
 	{
 		if ((int_specs[i].ispec) == spec)
 			return (int_specs[i].f);
@@ -104,5 +105,5 @@ int (*get_printer(char spec))(va_list)
  */
 int is_spec(const char spec)
 {
-	return (_strchr("csdixXuobS%", spec) != NULL);
+	return (_strchr("csdixXuobS%p", spec) != NULL);
 }
